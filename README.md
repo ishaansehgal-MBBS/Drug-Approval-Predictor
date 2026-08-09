@@ -20,16 +20,16 @@ By mapping model probability outputs directly to binary event risk, the model se
 
 ## Key Features
 
-* **Data Preprocessing & Scaling:** Cleans categorical and continuous variables, utilizing `MinMaxScaler` on target patient accrual size (`taracc`).
-* **Stratified Validation:** Employs a 70/30 train/test split and 5-fold `StratifiedKFold` cross-validation to maintain consistent target class distribution across splits [1].
-* **Model Benchmarking & Tuning:** Trains and compares Logistic Regression and Random Forest Classifiers using `GridSearchCV` hyperparameter optimization [1].
-* **Feature Explainability:** Extracts coefficient weights and tree importances to identify key structural drivers of clinical trial success (e.g., administration route, study design, sponsor tier) [1].
+* **Data Preprocessing & Scaling:** Cleans categorical and continuous variables, utilising `MinMaxScaler` on target patient accrual size (`taracc`).
+* **Stratified Validation:** Employs a 70/30 train/test split and 5-fold `StratifiedKFold` cross-validation to maintain consistent target class distribution across splits.
+* **Model Benchmarking & Tuning:** Trains and compares Logistic Regression and Random Forest Classifiers using `GridSearchCV` hyperparameter optimisation.
+* **Feature Explainability:** Extracts coefficient weights and tree importances to identify key structural drivers of clinical trial success (e.g., administration route, study design, sponsor tier).
 
 ---
 
 ## Performance & Results
 
-Given the class imbalance in historical trial outcomes (~18.7% baseline success rate) [1], performance is evaluated using Area Under the Receiver Operating Characteristic Curve (**ROC-AUC**):
+Given the class imbalance in historical trial outcomes (~18.7% baseline success rate), performance is evaluated using Area Under the Receiver Operating Characteristic Curve (**ROC-AUC**):
 
 | Model | Setup | Out-of-Sample AUC |
 | :--- | :--- | :--- |
@@ -39,11 +39,11 @@ Given the class imbalance in historical trial outcomes (~18.7% baseline success 
 | **Random Forest** | **Tuned (`GridSearchCV`)** | **`0.8254`** |
 
 ### Top Clinical Success Drivers (Logistic Regression Weights)
-1. **Oral Administration (`route.1`):** Positively impacts success probability over complex routes [1].
-2. **Double-Blind Design (`dkw.13`):** High study design rigor strongly correlates with trial success [1].
-3. **Non-Top 20 Pharma Sponsor (`stid.1`):** Specialized mid-tier pharma backing provides positive probability lift [1].
-4. **Top 20 Pharma Sponsor (`stid.31`):** Institutional resource backing improves success odds [1].
-5. **Biologics / Antibodies (`origin.25`):** Protein/antibody drug origins show structural advantages over traditional small molecules [1].
+1. **Oral Administration (`route.1`):** Positively impacts success probability over complex routes.
+2. **Double-Blind Design (`dkw.13`):** High study design rigor strongly correlates with trial success.
+3. **Non-Top 20 Pharma Sponsor (`stid.1`):** Specialised mid-tier pharma backing provides positive probability lift.
+4. **Top 20 Pharma Sponsor (`stid.31`):** Institutional resource backing improves success odds.
+5. **Biologics / Antibodies (`origin.25`):** Protein/antibody drug origins show structural advantages over traditional small molecules.
 
 ---
 
